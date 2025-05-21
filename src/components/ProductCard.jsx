@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {FaShoppingCart} from "react-icons/fa";
+import ProductViewModal from "./ProductVIew";
 
 const ProductCard=({
     productId,
@@ -11,14 +12,14 @@ const ProductCard=({
     discount,
     specialPrice,
 })=>{
-    const [openProductViewModal,setOpenViewModal]=useState(false);
+    const [openProductViewModal,setOpenProductViewModal]=useState(false);
     const buttonLoader=false;
     const [selectedViewProduct,setSelectedViewProduct]=useState("");
     const isAvailable=quantity && Number(quantity)>0; // to check the quantity is available or out of stock
 
     const handleProductView=(product)=>{
         setSelectedViewProduct(product);
-        setOpenViewModal(true);
+        setOpenProductViewModal(true);
     };
 
     return (
@@ -88,7 +89,14 @@ const ProductCard=({
                 </div>
                 
             </div>
+            <ProductViewModal 
+            open={openProductViewModal}
+            setOpen={setOpenProductViewModal}
+            product={selectedViewProduct}
+            isAvailable={isAvailable}
+            />
         </div>
+
     )
 }
 
