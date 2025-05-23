@@ -1,7 +1,10 @@
 import {configureStore} from "@reduxjs/toolkit"
+import { producerReducer } from "./ProductReducer";
 
 export const store = configureStore({
-    reducer:{},
+    reducer:{
+        products:producerReducer,
+    },
     preloadedState:{},
 });
 
