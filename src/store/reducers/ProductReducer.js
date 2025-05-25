@@ -1,6 +1,6 @@
 const initialState={
     products:null,
-    categories:null,
+    categories:[],
     pagination:{},
 };
 
@@ -19,6 +19,13 @@ export const producerReducer=(state=initialState,action)=>{
                     totalPages:action.totalPages,
                     lastPage:action.lastPage,
                 }
+            };
+
+        case "FETCH_CATEGORIES":
+            return {
+                ...state,
+                categories:action.payload,
+                
             };
 
             

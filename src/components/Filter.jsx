@@ -6,12 +6,7 @@ import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
 // http://localhost:xxxx?Keyword=test&sortby=desc
 
-const Filter=()=>{
-    const categories=[
-        {categoryId:1,categoryName:"Laptop"},
-        {categoryId:2,categoryName:"Wearable"},
-        {categoryId:3,categoryName:"Audio"},
-    ];
+const Filter=({categories})=>{
 
     const [searchParams]= useSearchParams(); // provide the ability for keyword?
     const params = new URLSearchParams(searchParams); // provide query parameters
@@ -35,13 +30,14 @@ const Filter=()=>{
     // For search query
     useEffect(()=>{
         const handler=setTimeout(()=>{
+            const updatedParams = new URLSearchParams(searchParams.toString());
             if(searchTerm){
-                searchParams.set("keyword",searchTerm);
+                updatedParams.set("keyword",searchTerm);
             }
             else{
-                searchParams.delete("keyword");
+                updatedParams.delete("keyword");
             }
-            navigate(`${pathName}?${searchParams.toString()}`);
+            navigate(`${pathName}?${updatedParams.toString()}`);
         },700);
 
         return ()=>{
@@ -60,14 +56,15 @@ const Filter=()=>{
         setCategory(event.target.value);
     };
 
-    const toggleSortOrder=()=>{
-        setSortOrder((prevOrder)=>{
-            const newOrder=(prevOrder==="asc")?"desc":"asc";
-            params.set("sortby",newOrder);
-            navigate(`${pathName}?${params}`)
-            return newOrder;
-        })
-    };
+    const toggleSortOrder = () => {
+    const newOrder = sortOrder === "asc" ? "desc" : "asc";
+
+    const updatedParams = new URLSearchParams(searchParams.toString());
+    updatedParams.set("sortby", newOrder);
+
+    setSortOrder(newOrder); // state update
+    navigate(`${pathName}?${updatedParams.toString()}`); // navigation after state update
+};
 
     const handleClearFilter=()=>{
         navigate({pathname: window.location.pathname});
@@ -111,7 +108,7 @@ const Filter=()=>{
 
                 {/* Sort Button and Clear Filter */}
                 <Tooltip title="Sorted by price: asc">
-                    <IconButton>
+                    
                         <Button 
                             variant="contained" 
                             color="primary" 
@@ -125,13 +122,12 @@ const Filter=()=>{
                             }
                             
                         </Button>
-                    </IconButton>
+                    
                 </Tooltip>
                 <button 
-                    className="flex items-center gap-2 bg-rose-900 text-white px-3 py-2 rounded-md transition duration-300 ease-in shadow-md focus:outline-none cursor-pointer"
+                    className="flex items-center gap-2 bg-rose-900 text-white px-3 py-2 rounded-md transition duration-300 ease-in shadow-md focus:outline-none cursor-pointer hover:bg-rose-800"
                     onClick={handleClearFilter}
                     >
-                    
                     <FiRefreshCw className="font-semibold" size={16}/>
                     <span className="font-semibold">Clear Filter</span>
                 </button>
