@@ -1,6 +1,7 @@
 import { useState } from "react";
 import {FaShoppingCart} from "react-icons/fa";
-import ProductViewModal from "./ProductVIew";
+import ProductViewModal from "./ProductViewModal";
+import truncateText from "../../utils/truncateText";
 
 const ProductCard=({
     productId,
@@ -52,10 +53,10 @@ const ProductCard=({
                         discount,
                         specialPrice,
                     })
-                }} className="text-lg font-semibold mb-2 cursor-pointer">{productName}</h2>
+                }} className="text-lg font-semibold mb-2 cursor-pointer">{truncateText(productName,50)}</h2>
                 {/* Description */}
                 <div className="min-h-20 max-h-20">
-                    <p className="text-gray-600 text-sm">{description}</p>
+                    <p className="text-gray-600 text-sm">{truncateText(description,80)}</p>
                 </div>
                 {/* Product Price */}
                 {/* if discounted price exist displayin special Price */}
