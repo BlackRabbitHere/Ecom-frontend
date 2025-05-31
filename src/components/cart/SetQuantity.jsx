@@ -1,4 +1,4 @@
-const btnStyles="border-[1.2px] border-slate-800 px-3 py-1 rounded"
+const btnStyles="border-[1.2px] border-slate-800 px-3 py-1 rounded cursor-pointer"
 
 const SetQuantity=({
     quantity,
@@ -12,6 +12,7 @@ const SetQuantity=({
             {cardCounter?null:<div className="font-semibold">QUANTITY</div>}
             <div className="flex md:flex-row flex-col gap-4 items-center lg:text-[22px] text-sm">
                 <button 
+                    onClick={handleQtyDecrease}
                     disabled={quantity<=1}
                     className={btnStyles}
                     >
@@ -21,7 +22,7 @@ const SetQuantity=({
                         {quantity}
                     </div>
                 <button 
-                    disabled={quantity<=1}
+                    onClick={handleQtyIncrease}
                     className={btnStyles}
                     >
                         +
