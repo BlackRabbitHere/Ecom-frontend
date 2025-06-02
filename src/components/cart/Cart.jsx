@@ -29,7 +29,7 @@ const Cart=()=>{
                     <MdShoppingCart size={36} className="text-gray-700"/>
                     Your Cart
                 </h1>
-                <p className="text-lg text-gray-600 mt-2">All you selected items</p>
+                <p className="text-lg text-gray-600 mt-2">All your selected items</p>
             </div>
 
             <div className="grid md:grid-cols-5 grid-cols-4 gap-4 pb-2 font-semibold items-center">
