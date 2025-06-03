@@ -134,9 +134,9 @@ export const authenticateSignInUser
             reset()
             toast.success("Login Success")
             navigate("/")
-        } catch{
-            console.log(error);
-            toast.error(error.response.data.message||"Internal Server Error");
+        } catch(error){
+            // console.log(error);
+            toast.error(error?.response?.data?.message||"Internal Server Error");
         } finally{
             setLoader(false);
         }
@@ -151,10 +151,18 @@ export const registerNewUser
             reset()
             toast.success(data?.message || "User Registered Successfully")
             navigate("/login")
-        } catch{
+        } catch(error){
             console.log(error);
             toast.error(error?.response?.data?.message|| error?.response?.data?.password ||"Internal Server Error");
         } finally{
             setLoader(false);
         }
 }
+
+
+export const logOutUser=(navigate)=>(dispatch)=>{
+    dispatch({type:"LOG_OUT"});
+
+    localStorage.removeItem("auth");
+    navigate("/login");
+};
