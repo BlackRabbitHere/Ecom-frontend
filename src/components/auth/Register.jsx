@@ -4,6 +4,8 @@ import { FaUserPlus } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import InputField from "../shared/InputField";
+import { registerNewUser } from "../../store/action";
+import toast from "react-hot-toast";
 
 
 const Register = () => {
@@ -21,6 +23,7 @@ const Register = () => {
 
     const registerHandler=async (data)=>{
         console.log("Register Clicked");
+        dispatch(registerNewUser(data,toast,reset,navigate,setLoader));
         
     }
 
