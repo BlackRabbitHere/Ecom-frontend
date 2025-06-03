@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import InputField from "../shared/InputField";
 import { registerNewUser } from "../../store/action";
 import toast from "react-hot-toast";
+import Spinners from "../shared/Spinners";
 
 
 const Register = () => {
@@ -72,7 +73,7 @@ const Register = () => {
                     className="bg-gradient-to-r from-purple-700 to-red-500 flex gap-2 items-center justify-center font-semibold text-white w-full py-2 hover:text-slate-400 transition-colors duration-100 rounded-sm my-3 cursor-pointer"
                     type="submit">
                         {loader?(
-                            <>Loading...</>
+                            <><Spinners/>Loading... </>
                             
                         ): (
                             <>Register</>
