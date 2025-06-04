@@ -3,12 +3,14 @@ import { AiOutlineLogin } from "react-icons/ai";
 import InputField from "../shared/InputField";
 import Spinners from "../shared/Spinners";
 import { FaAddressCard } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import toast from "react-hot-toast";
+import { addUpdateUserAddress } from "../../store/action";
 
-const AddAddressForm=()=>{
+const AddAddressForm=({address,setOpenAd,setOpenAddressModal})=>{
 
     const {btnLoader}=useSelector((state)=>state.errors)
-
+    const dispatch=useDispatch();
     const {
             register,
             handleSubmit,
@@ -19,8 +21,9 @@ const AddAddressForm=()=>{
         })
         
         const onSaveAddressHandler=async (data)=>{
-            console.log("Address Clicked");
+            // console.log("Address Clicked");
             // dispatch(authenticateSignInUser(data,toast,reset,navigate,setLoader))
+            dispatch(addUpdateUserAddress(data,toast,address?.addressId,setOpenAddressModal))
         }
 
     return(
