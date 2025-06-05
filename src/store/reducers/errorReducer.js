@@ -20,6 +20,9 @@ export const errorReducer=(state=initialState,action)=>{
                 ...state,
                 isLoading:false,
                 errorMessage:null,
+                btnLoader:false,
+                categoryError:null,
+                categoryLoader:false,
             };
         case "IS_ERROR":
             return {

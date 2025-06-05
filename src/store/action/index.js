@@ -175,6 +175,7 @@ export const addUpdateUserAddress=(sendData,toast,addressId,setOpenAddressModal)
     try{
             const{data}=await api.post("/addresses",sendData);
             toast.success("Address saved successfully")
+            dispatch({type:"IS_SUCCESS"});
         } catch(error){
             console.log(error);
             toast.error(error?.response?.data?.message ||"Internal Server Error");
