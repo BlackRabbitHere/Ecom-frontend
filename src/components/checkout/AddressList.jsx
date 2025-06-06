@@ -3,7 +3,7 @@ import { MdLocationCity, MdPinDrop, MdPublic } from "react-icons/md"
 import { useDispatch, useSelector } from "react-redux";
 import { selectedUserCheckOutAddress } from "../../store/action";
 
-const AddressList=({addresses,setSelectedAddress,setOpenAddressModal})=>{
+const AddressList=({addresses,setSelectedAddress,setOpenAddressModal,setOpenDeleteModal})=>{
     const dispatch=useDispatch();
     const {selectedUserCheckoutAddress}=useSelector((state)=>state.auth);
 
@@ -16,8 +16,9 @@ const AddressList=({addresses,setSelectedAddress,setOpenAddressModal})=>{
         setOpenAddressModal(true); // we can use the same address form that we ask user to fill when no address was there
     }
 
-    const onDeleteButtonHandler=()=>{
+    const onDeleteButtonHandler=(addresses)=>{
         setSelectedAddress(addresses);
+        setOpenDeleteModal(true);
     }
 
 
