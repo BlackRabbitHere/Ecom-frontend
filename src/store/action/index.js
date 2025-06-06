@@ -194,7 +194,7 @@ export const addUpdateUserAddress=(sendData,toast,addressId,setOpenAddressModal)
 export const getUserAddresses=()=>async(dispatch)=>{
     try{
         dispatch({type:"IS_FETCHING"});
-        const {data}=await api.get(`/addresses`);
+        const {data}=await api.get(`/user/addresses`);
         dispatch({type:"USER_ADDRESS",payload:data});
         dispatch({type:"IS_SUCCESS"});
     } catch(error){
