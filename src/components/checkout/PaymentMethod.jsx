@@ -1,9 +1,9 @@
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { addPaymentMethod, createUserCart } from "../../store/action";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 
-const PaymentMethod=()=>{
+const PaymentMethod=({totalPrice,isEqual})=>{
 
     const {paymentMethod}=useSelector((state)=> state.payment);
     const {cart,cartId}=useSelector((state)=> state.carts);
@@ -25,8 +25,10 @@ const PaymentMethod=()=>{
             });
             dispatch(createUserCart(sendCartItems));
         }  
-    },[dispatch,cartId])
+    },[dispatch,cartId,cart])
 
+    
+        
     return(
         <div className="max-w-md mx-auto p-5 bg-white shadow-md rounded-lg mt-16 border border-slate-200">
             <h1 className="text-2xl font-semibold mb-4">Select Payment Method</h1>

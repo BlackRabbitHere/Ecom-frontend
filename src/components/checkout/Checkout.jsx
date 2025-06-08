@@ -1,5 +1,5 @@
 import { Button, Step, StepLabel, Stepper } from '@mui/material';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import AddressInfo from './AddressInfo';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserAddresses } from '../../store/action';
@@ -8,12 +8,14 @@ import toast from 'react-hot-toast';
 import Skeleton from '../shared/Skeleton';
 import ErrorPage from '../shared/ErrorPage';
 import PaymentMethod from './PaymentMethod';
+import OrderSummary from './OrderSummary';
 
 const Checkout = () => {
 
     const [activeStep,setActiveStep]=useState(0);
     const {address,selectedUserCheckoutAddress}=useSelector((state)=>state.auth);
     const {isLoading,errorMessage}=useSelector((state)=>state.errors)
+    const {cart,totalPrice}=useSelector((state)=>state.carts)
     const steps=[
         "Address",
         "Payment Method",
@@ -41,7 +43,7 @@ const Checkout = () => {
         dispatch(getUserAddresses());
     },[dispatch])
 
-    const paymentMethod=false;
+    const {paymentMethod}=useSelector((state)=>state.payment);
   return (
     <div className='py-14 min-h-[calc(100vh-100px)]'>
         <Stepper activeStep={activeStep} alternativeLabel>
@@ -60,6 +62,11 @@ const Checkout = () => {
             <div className='mt-5'>
             { activeStep===0 && <AddressInfo address={address}/>}
             { activeStep===1 && <PaymentMethod/>}
+            { activeStep===2 && <OrderSummary
+                                    totalPrice={totalPrice}
+                                    cart={cart}
+                                    address={selectedUserCheckoutAddress}
+                                    paymentMethod={paymentMethod}/>}
             </div>
         )}
         

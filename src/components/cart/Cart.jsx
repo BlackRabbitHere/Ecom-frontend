@@ -7,7 +7,7 @@ import { formatPrice } from "../../utils/formatPrice";
 
 
 const Cart=()=>{
-    const dispact=useDispatch();
+    const dispatch=useDispatch();
     const {cart}=useSelector((state)=>state.carts);
     const newCart={...cart};
 
