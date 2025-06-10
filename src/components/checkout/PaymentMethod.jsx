@@ -15,7 +15,7 @@ const PaymentMethod=({totalPrice,isEqual})=>{
 
     }
 
-    console.log(cart.length);
+    // console.log(cart.length);
 
     useEffect(()=>{
         if(cart.length>0 && !cartId && !errorMessage){
@@ -27,7 +27,7 @@ const PaymentMethod=({totalPrice,isEqual})=>{
             });
             dispatch(createUserCart(sendCartItems));
         }  
-    },[dispatch,cartId,cart.length])
+    },[dispatch,cartId])
 
     
         
