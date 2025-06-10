@@ -20,6 +20,9 @@ const initialState={
 
 };
 
+const selectedUserCheckOutAddress=localStorage.getItem("CHECKOUT_ADDRESS")
+    ? JSON.parse(localStorage.getItem("CHECKOUT_ADDRESS"))
+    :[];
 
 export const store = configureStore({
     reducer:{

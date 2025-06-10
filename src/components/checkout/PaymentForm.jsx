@@ -14,6 +14,20 @@ const PaymentForm = ({clientSecret,totalPrice}) => {
          if (!stripe || !elements) {
             return;
         }
+
+        const {error:submitError}= await elements.submit(); // checking form for errors
+        const {error}=await stripe.confirmPayment({
+            elements,
+            clientSecret,
+            confirmParams:{
+                return_url:`${import.meta.env.VITE_FRONTEND_URL}/order-confirm`,
+            },
+        });
+
+        if(error){
+            setErrorMessage(error.message);
+            return false;
+        }
     };
 
     const paymentElementOptions={
