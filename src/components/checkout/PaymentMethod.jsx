@@ -15,6 +15,8 @@ const PaymentMethod=({totalPrice,isEqual})=>{
 
     }
 
+    console.log(cart.length);
+
     useEffect(()=>{
         if(cart.length>0 && !cartId && !errorMessage){
             const sendCartItems=cart.map((item)=>{
@@ -25,7 +27,7 @@ const PaymentMethod=({totalPrice,isEqual})=>{
             });
             dispatch(createUserCart(sendCartItems));
         }  
-    },[dispatch,cartId,cart])
+    },[dispatch,cartId,cart.length])
 
     
         
