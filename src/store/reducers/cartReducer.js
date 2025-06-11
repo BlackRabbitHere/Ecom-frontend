@@ -26,23 +26,26 @@ export const cartReducer=(state=initialState,action)=>{
                 return {
                     ...state,
                     cart:updatedCart,
+                    cartId:0,
                 }
             }else{
                 const newCart=[...state.cart,productToAdd];
                 return{
                     ...state,
                     cart:newCart,
+                    cartId:0,
                 }
             }
         case "REMOVE_CART":
             return {
                 ...state,
+                cartId:0,
                 cart:state.cart.filter(
                     (item)=>item.productId!==action.payload.productId
                 ),
             }
         case "CLEAR_CART":
-            return{cart:[],totalPrice:0,carId:null};
+            return{cart:[],totalPrice:0,cartId:null};
         case "GET_USER_CART_PRODUCTS":
             return{
                 ...state,

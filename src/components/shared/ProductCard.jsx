@@ -35,7 +35,7 @@ const ProductCard=({
     }
 
     return (
-        <div className="border rounded-lg shadow-xl overflow-hidden transition-shadow duration-300">
+        <div className="border border-slate-200 rounded-lg shadow-xl overflow-hidden transition-shadow duration-300">
             {/* to open product page on clicking on it */}
             <div onClick={()=>{
                 handleProductView({

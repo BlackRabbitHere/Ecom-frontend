@@ -275,9 +275,14 @@ export const getUserCart=()=>async(dispatch,getState)=>{
         const {data} =await api.get('/carts/users/cart');
         // update the info recieved from user cart from backend and update it in the localstorage
 
+        // Modify image URLs
+        const updatedProducts = data.products.map(product => ({
+            ...product,
+            image: `${import.meta.env.VITE_BACK_END_URL}/images/${product.image}`
+        }));
         dispatch({
             type:"GET_USER_CART_PRODUCTS",
-            payload:data.products,
+            payload:updatedProducts,
             totalPrice:data.totalPrice,
             cartId:data.cartId
         })
