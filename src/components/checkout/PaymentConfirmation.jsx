@@ -2,9 +2,10 @@ import { Skeleton } from "@mui/material";
 import { useEffect, useState } from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useSearchParams } from "react-router-dom"
+import { Link, useLocation, useSearchParams } from "react-router-dom"
 import { stripePaymentConfirmation } from "../../store/action";
 import toast from "react-hot-toast";
+import { MdArrowBack } from "react-icons/md";
 
 const PaymentConfirmation = () => {
 
@@ -54,6 +55,12 @@ const PaymentConfirmation = () => {
                     Thank you for your purchase! Your payment was successful, and we’re
                     processing your order.
                 </p>
+                <Link 
+                    to={"/"}
+                    className="flex gap-2 items-center justify-center text-blue-500 hover:text-blue-600 transition">
+                        <MdArrowBack size={24}/>
+                        <span className="font-medium">Continue Shopping</span>
+                    </Link>
             </div>
         )}
     </div>

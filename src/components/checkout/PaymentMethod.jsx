@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addPaymentMethod, createUserCart } from "../../store/action";
 import { useEffect, useMemo } from "react";
 
-const PaymentMethod=({totalPrice,isEqual})=>{
+const PaymentMethod=()=>{
 
     const {paymentMethod}=useSelector((state)=> state.payment);
     const {cart,cartId}=useSelector((state)=> state.carts);
