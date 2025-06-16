@@ -107,7 +107,7 @@ const Filter=({categories})=>{
                 </FormControl>
 
                 {/* Sort Button and Clear Filter */}
-                <Tooltip title={"Sorted by price: asc"}>
+                <Tooltip title={`Sorted by price: ${sortOrder === "asc" ? "Ascending" : "Descending"}`}>
                     
                         <Button 
                             variant="contained" 
