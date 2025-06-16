@@ -50,14 +50,13 @@ const UserMenu=()=>{
           },
         }}
       >
-        <Link to={"/profile"}>
+
         <MenuItem onClick={handleClose} className='flex gap-2'>
             <BiUser className='text-xl'/>
             <span className='font-bold text-[16px] mt-1'>
                 {user?.username}
             </span>
         </MenuItem>
-        </Link>
         
 
         <Link to={"/profile/orders"}>

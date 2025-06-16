@@ -24,6 +24,7 @@ const useProductFilter=()=>{
         params.set("sortOrder",sortOrder);
 
         if(categoryParams){
+            params.set("pageNumber",currentPage-currentPage);
             params.set("category",categoryParams);
         }
 

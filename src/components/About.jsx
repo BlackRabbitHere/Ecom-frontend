@@ -3,28 +3,28 @@ import ProductCard from "./shared/ProductCard";
 const About=()=>{
     const products = [
         {
-            image: "https://embarkx.com/sample/placeholder.png",
-            productName: "iPhone 13 Pro Max",
+            image: "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mba13-m4-midnight-gallery1-202503?wid=4000&hei=3074&fmt=jpeg&qlt=90&.v=eE5XY1NucjRjZXpnbnZTeEdWQUdXOEN5aTN1Szd3bzB6QjA3QWdrUitrZ1djYmVDUzhhc1RUeW9wRE1pamIxTTczL0VhTmFwUWpXdlYycEJiOVl2QmR6bjJhWkgvT2tCdzFYemk5WGFrSVdDa3lNQlM2VUFiSHRiV1dlZnZaZjQ",
+            productName: "MacBook Air",
             description:
-            "The iPhone 13 Pro Max offers exceptional performance with its A15 Bionic chip, stunning Super Retina XDR display, and advanced camera features for breathtaking photos.",
+            "The MacBook Pro 13 delivers powerful performance with the Apple M2 chip, a vibrant Retina display, and an all-day battery life—perfect for professionals and creatives seeking speed, portability, and precision.",
             specialPrice: 720,
             price: 780,
         },
         {
-            image: "https://embarkx.com/sample/placeholder.png",
-            productName: "Samsung Galaxy S21",
+            image: "https://res.cloudinary.com/de5wsgonm/image/upload/v1750041682/AeroFit_SmartBand_povasj.png",
+            productName: "AeroFit SmartBand 5",
             description:
-            "Experience the brilliance of the Samsung Galaxy S21 with its vibrant AMOLED display, powerful camera, and sleek design that fits perfectly in your hand.",
-            specialPrice: 699,
-            price: 799,
+            "Track your health with AeroFit SmartBand 5 – featuring heart rate monitor, sleep tracking, SpO2 sensor, and waterproof design. 14-day battery life.",
+            specialPrice: 49.99,
+            price: 60,
         },
         {
-            image: "https://embarkx.com/sample/placeholder.png",
-            productName: "Google Pixel 6",
+            image: "https://res.cloudinary.com/de5wsgonm/image/upload/v1750041528/Screenshot_2025-06-13_192940_x75qql.png",
+            productName: "VisionBook Ultra 17",
             description:
-            "The Google Pixel 6 boasts cutting-edge AI features, exceptional photo quality, and a stunning display, making it a perfect choice for Android enthusiasts.",
-            price: 599,
-            specialPrice: 400,
+            "Massive 17-inch display, Intel i7 processor, RTX 4060 GPU, and 32GB DDR5 RAM. Ideal for gamers and power users.",
+            price: 1899,
+            specialPrice: 1747.08,
         }
     ];
     return (
@@ -42,7 +42,7 @@ const About=()=>{
 
                 <div className="w-full md:w-1/2 mb-6 md:mb-0">
                     <img 
-                        src="https://embarkx.com/sample/placeholder.png" 
+                        src="https://res.cloudinary.com/de5wsgonm/image/upload/v1749828243/2741840_ps5nrj.jpg" 
                         alt="About Us"
                         className="w-full h-auto rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105"
                         />
