@@ -15,6 +15,7 @@ import Register from './components/auth/Register'
 import Checkout from './components/checkout/Checkout'
 import PaymentConfirmation from './components/checkout/PaymentConfirmation'
 import Order from './components/order/Order'
+import NotFound from './components/NotFound'
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
             <Route path='/login' element={<Login/>}/>
             <Route path='/register' element={<Register/>}/>
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
       <Toaster position='bottom-center'/>
