@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import {useForm} from "react-hook-form"
 import { useState } from "react";
-import { AiOutlineLogin } from "react-icons/ai"
+import { AiFillEye, AiFillEyeInvisible, AiOutlineEye, AiOutlineEyeInvisible, AiOutlineLogin } from "react-icons/ai"
 import InputField from "../shared/InputField";
 import { useDispatch } from "react-redux";
 import { authenticateSignInUser } from "../../store/action";
@@ -12,6 +12,8 @@ const Login=()=>{
     const navigate=useNavigate();
     const dispatch=useDispatch();
     const [loader,setLoader]=useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+
     const {
         register,
         handleSubmit,
@@ -47,16 +49,25 @@ const Login=()=>{
                         placeholder="Enter your username"
                         register={register}
                         errors={errors}/>
+                    <div className="relative">
                     <InputField
                         label="Password"
                         required
                         id="password"
-                        type="password"
+                        type={showPassword ? "text" : "password"}
                         message="*Password is Required"
                         placeholder="Enter your password"
                         register={register}
                         errors={errors}/>
-                </div>
+                    <span
+                    className="absolute right-3 top-[38px] cursor-pointer text-gray-600"
+                    onClick={() => setShowPassword(!showPassword)}
+                    >
+                        {showPassword ? <AiFillEyeInvisible size={20} /> : <AiFillEye size={20} />}
+                        
+                    </span>
+                    </div>
+                    </div>
                 <button disabled={loader}
                     className="bg-gradient-to-r from-purple-700 to-red-500 flex gap-2 items-center justify-center font-semibold text-white w-full py-2 hover:text-slate-400 transition-colors duration-100 rounded-sm my-3 cursor-pointer"
                     type="submit">

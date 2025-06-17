@@ -7,12 +7,14 @@ import InputField from "../shared/InputField";
 import { registerNewUser } from "../../store/action";
 import toast from "react-hot-toast";
 import Spinners from "../shared/Spinners";
+import { AiFillEye, AiFillEyeInvisible, AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 
 const Register = () => {
   const navigate=useNavigate();
     const dispatch=useDispatch();
     const [loader,setLoader]=useState(false);
+    const [showPassword, setShowPassword] = useState(false);
     const {
         register,
         handleSubmit,
@@ -58,16 +60,25 @@ const Register = () => {
                         placeholder="Enter your email"
                         register={register}
                         errors={errors}/>
+                    <div className="relative">
                     <InputField
                         label="Password"
                         required
                         id="password"
                         min={6}
-                        type="password"
+                        type={showPassword ? "text" : "password"}
                         message="*Password is Required"
                         placeholder="Enter your password"
                         register={register}
                         errors={errors}/>
+                        <span
+                            className="absolute right-3 top-[38px] cursor-pointer text-gray-600"
+                            onClick={() => setShowPassword(!showPassword)}
+                            >
+                                {showPassword ? <AiFillEyeInvisible size={20} /> : <AiFillEye size={20} />}
+
+                            </span>
+                        </div>
                 </div>
                 <button disabled={loader}
                     className="bg-gradient-to-r from-purple-700 to-red-500 flex gap-2 items-center justify-center font-semibold text-white w-full py-2 hover:text-slate-400 transition-colors duration-100 rounded-sm my-3 cursor-pointer"
