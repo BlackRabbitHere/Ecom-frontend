@@ -29,6 +29,7 @@ const useProductFilter=()=>{
         }
 
         if(keyword){
+            params.set("pageNumber",currentPage-currentPage);
             params.set("keyword",keyword);
         }
 
